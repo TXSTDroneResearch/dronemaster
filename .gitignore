@@ -1,6 +1,12 @@
 # Prerequisites
 *.d
 
+# VSCode user settings
+.vscode/
+
+# Build output
+build/
+
 # Compiled Object files
 *.slo
 *.lo
