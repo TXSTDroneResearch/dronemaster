@@ -10,7 +10,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
 PROJECT(MasterServer CXX)
 ENABLE_TESTING()
 
-# include(FindPkgConfig)
+include(FindPkgConfig)
 
 set (CMAKE_CXX_STANDARD 11)
 set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${PROJECT_SOURCE_DIR})
@@ -24,9 +24,10 @@ FILE(GLOB MASTERSERVER_SOURCES
 )
 
 # SET(RTMATH_USE_DOUBLE false CACHE BOOL "Use doubles instead of floats internally")
-SET(USE_AVAHI false CACHE BOOL "Use Avahi")
+SET(USE_AVAHI TRUE CACHE BOOL "Use Avahi")
 
 ADD_EXECUTABLE(MasterServer ${MASTERSERVER_SOURCES})
+target_link_libraries(MasterServer pthread)
 
 if (USE_AVAHI)
     find_package(Avahi REQUIRED)
